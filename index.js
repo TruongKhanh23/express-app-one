@@ -18,6 +18,25 @@ app.get("/three1", function (request, response) {
   response.status(201).end();
 });
 
+app.get("/four", function (request, response) {
+  let myJSONArray = [
+    {
+      name: "Khánh",
+      city: "Ho Chi Minh City",
+    },
+    {
+      name: "Vy",
+      city: "Ninh Thuan City",
+    },
+    {
+      name: "Khánh Vy",
+      city: "Da Lat City",
+    },
+  ];
+
+  response.json(myJSONArray);
+});
+
 app.listen(8000, function () {
   console.log("Server Run Success");
 });
