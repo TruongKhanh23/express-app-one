@@ -41,6 +41,14 @@ app.get("/five", function (request, response) {
   response.download("./uploads/nha-tho-duc-ba.jpg");
 });
 
+app.get("/vietnam", function (request, response) {
+  response.redirect("http://localhost:8000/korea");
+});
+
+app.get("/korea", function (request, response) {
+  response.send("This is korea page");
+});
+
 app.listen(8000, function () {
   console.log("Server Run Success");
 });
