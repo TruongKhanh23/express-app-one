@@ -37,6 +37,10 @@ app.get("/four", function (request, response) {
   response.json(myJSONArray);
 });
 
+app.get("/five", function (request, response) {
+  response.download("./uploads/nha-tho-duc-ba.jpg");
+});
+
 app.listen(8000, function () {
   console.log("Server Run Success");
 });
