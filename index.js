@@ -4,8 +4,8 @@ app = express();
 
 app.get("/", function (request, response) {
 
-  let firstName = request.query.firstName;
-  let lastName = request.query.lastName;
+  let firstName = request.header("firstName");
+  let lastName = request.header("lastName");
 
   response.end(firstName + " " + lastName);
 });
