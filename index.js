@@ -4,10 +4,10 @@ app = express();
 
 app.post("/", function (request, response) {
 
-  let firstName = request.query.firstName;
-  let lastName = request.query.lastName;
+  let userName = request.header("userName");
+  let password = request.header("password");
 
-  response.send(firstName + " " + lastName);
+  response.send("User Name: " + userName + "/ Password: " + password);
 });
 
 app.listen(8000, function () {
