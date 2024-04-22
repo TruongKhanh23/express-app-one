@@ -49,7 +49,33 @@ app.get("/korea", function (request, response) {
   response.send("This is korea page");
 });
 
+// Response Header
+app.get("/six", function (request, response) {
+  response.append("name", "Truong Khanh");
+  response.append("city", "Long Xuyen");
+
+  response.status(201).end("This is Response Header")
+});
+
+// Response Set Cookies Data
+app.get("/seven", function (request, response) {
+  response.cookie("name", "Truong Khanh");
+  response.cookie("city", "Long Xuyen");
+  response.cookie("age", "24 years old");
+
+  response.end("Cookie set successfully")
+});
+
+// Response Delete Cookies Data
+app.get("/eight", function (request, response) {
+  response.clearCookie("name");
+  response.clearCookie("city");
+  response.clearCookie("age");
+
+  response.end("Clear cookie successfully")
+});
+
+
 app.listen(8000, function () {
   console.log("Server Run Success");
 });
-``;
