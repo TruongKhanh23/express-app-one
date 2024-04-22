@@ -49,7 +49,15 @@ app.get("/korea", function (request, response) {
   response.send("This is korea page");
 });
 
+// Response Header
+app.get("/six", function (request, response) {
+  response.append("name", "Truong Khanh");
+  response.append("city", "Long Xuyen");
+
+  response.status(201).end("This is Response Header")
+});
+
 app.listen(8000, function () {
   console.log("Server Run Success");
 });
-``;
+
