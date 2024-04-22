@@ -2,12 +2,12 @@ var express = require("express");
 
 app = express();
 
-app.get("/", function (request, response) {
+app.post("/", function (request, response) {
 
-  let firstName = request.header("firstName");
-  let lastName = request.header("lastName");
+  let firstName = request.query.firstName;
+  let lastName = request.query.lastName;
 
-  response.end(firstName + " " + lastName);
+  response.send(firstName + " " + lastName);
 });
 
 app.listen(8000, function () {
