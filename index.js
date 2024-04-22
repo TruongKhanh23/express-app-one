@@ -2,12 +2,8 @@ var express = require("express");
 
 app = express();
 
-app.get("/", function (request, response) {
-
-  let firstName = request.header("firstName");
-  let lastName = request.header("lastName");
-
-  response.end(firstName + " " + lastName);
+app.post("/", function (request, response) {
+  response.send("This is simple post request")
 });
 
 app.listen(8000, function () {
