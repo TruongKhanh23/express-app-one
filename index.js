@@ -3,7 +3,11 @@ var express = require("express");
 app = express();
 
 app.post("/", function (request, response) {
-  response.send("This is simple post request")
+
+  let firstName = request.query.firstName;
+  let lastName = request.query.lastName;
+
+  response.send(firstName + " " + lastName);
 });
 
 app.listen(8000, function () {
