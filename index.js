@@ -1,14 +1,27 @@
 var express = require("express");
 var multer  = require('multer')
-var multer = multer()
 
 app = express();
-app.use(multer.array())
-app.use(express.static("public"))
+
+var storage = multer.diskStorage({
+  destination: function(request, file, callBack){
+    callBack(null, "./uploads")
+  },
+  filename: function(request, file, callBack){
+    callBack(null, file.originalname)
+  }
+})
+
+var upload = multer({storage: storage}).single("myFile")
 
 app.post("/", function (request, response) {
-  let jsonData = request.body;
-  response.send(JSON.stringify(jsonData))
+  upload(request, response, function(error) {
+    if (error) {
+      response.send("File Upload Failed")
+    } else {
+      response.send("File Upload Sucessed")
+    }
+  })
 });
 
 app.listen(8000, function () {
