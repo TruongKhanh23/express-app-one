@@ -1,13 +1,13 @@
 var express = require("express");
+var bodyParser = require("body-parser");
 
 app = express();
+app.use(bodyParser.json())
 
 app.post("/", function (request, response) {
-
-  let userName = request.header("userName");
-  let password = request.header("password");
-
-  response.send("User Name: " + userName + "/ Password: " + password);
+  let jsonData = request.body;
+  let jsonString = JSON.stringify(jsonData);
+  response.send(jsonString)
 });
 
 app.listen(8000, function () {
