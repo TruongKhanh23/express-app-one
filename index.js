@@ -1,28 +1,23 @@
 var express = require("express");
-var multer  = require('multer')
 
 app = express();
 
-var storage = multer.diskStorage({
-  destination: function(request, file, callBack){
-    callBack(null, "./uploads")
-  },
-  filename: function(request, file, callBack){
-    callBack(null, file.originalname)
-  }
+app.get("/", function(request, response){
+  response.send("This is home page")
 })
 
-var upload = multer({storage: storage}).single("myFile")
+app.use("/about", function(request, response, next){
+  console.log("I am from About validation");
+  next()
+})
 
-app.post("/", function (request, response) {
-  upload(request, response, function(error) {
-    if (error) {
-      response.send("File Upload Failed")
-    } else {
-      response.send("File Upload Sucessed")
-    }
-  })
-});
+app.get("/about", function(request, response){
+  response.send("This is about page")
+})
+
+app.get("/contact", function(request, response){
+  response.send("This is contact page")
+})
 
 app.listen(8000, function () {
   console.log("Server Run Success");
