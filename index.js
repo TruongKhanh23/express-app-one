@@ -57,7 +57,16 @@ app.get("/six", function (request, response) {
   response.status(201).end("This is Response Header")
 });
 
+// Response Set Cookies Data
+app.get("/seven", function (request, response) {
+  response.cookie("name", "Truong Khanh");
+  response.cookie("city", "Long Xuyen");
+  response.cookie("age", "24 years old");
+
+  response.end("Cookie set successfully")
+});
+
+
 app.listen(8000, function () {
   console.log("Server Run Success");
 });
-
